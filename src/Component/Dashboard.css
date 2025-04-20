@@ -1,5 +1,4 @@
-/* Reset & Base Styles */
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -10,7 +9,6 @@ body, html {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Full Container */
 .full-container {
   width: 100%;
   height: 100vh;
@@ -19,7 +17,6 @@ body, html {
   background-color: #f4f7fa;
 }
 
-/* Header */
 .header-bar {
   width: 100%;
   background-color: #0a4275;
@@ -68,11 +65,10 @@ body, html {
   background-color: #e6c200;
 }
 
-/* Main Body */
 .main-body {
   width: 100%;
   padding: 40px;
-  background-color: white; /* Main body background set to white */
+  background-color: white;
 }
 
 .main-body h2 {
@@ -81,7 +77,6 @@ body, html {
   font-size: 24px;
 }
 
-/* Form Row */
 .form-row {
   display: flex;
   align-items: flex-end;
@@ -127,7 +122,6 @@ body, html {
   background-color: #06325c;
 }
 
-/* Attendance Table */
 #attendance-table {
   width: 100%;
   border-collapse: collapse;
@@ -175,7 +169,6 @@ body, html {
   padding: 10px;
 }
 
-/* Submit Attendance Button (within main-body) */
 .main-body > button {
   margin-top: 30px;
   padding: 12px 20px;
@@ -193,7 +186,6 @@ body, html {
   background-color: #06325c;
 }
 
-/* Bottom Bar */
 .bottom-bar {
   background-color: #1e1e1e;
   color: #fff;
@@ -202,4 +194,4 @@ body, html {
   font-size: 14px;
   border-top: 1px solid #333;
   width: 100%;
-}
+} */
