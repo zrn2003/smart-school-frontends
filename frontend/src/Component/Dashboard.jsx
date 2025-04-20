@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'; // ✅ Correct import
 import './styles.css';
+import { Toaster, toast } from 'react-hot-toast';
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -93,7 +94,7 @@ export default function Dashboard() {
 
     const handleSubmitAttendance = async () => {
         for (const field of fields) {
-            if (field.status === "Absent") {
+            if (field.status === "Absent" || field.status === "Absent with DL") {
                 const time = new Date().toLocaleString(); // Get the current time
                 await fetch('http://localhost:5000/sendSms', {
                     method: 'POST',
@@ -111,6 +112,11 @@ export default function Dashboard() {
             }
         }
 
+        // Show success toast notification
+        toast.success('SMS sent successfully and data saved!', {
+            duration: 3000, // Duration for the toast
+        });
+
         // Reset the fields after sending the messages
         setFields([]); // Clear the fields array
         setAbsentCount(0); // Reset the absent count
@@ -118,6 +124,29 @@ export default function Dashboard() {
 
     return (
         <div className="full-container">
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+                gutter={8}
+                containerClassName=""
+                containerStyle={{}}
+                toastOptions={{
+                    className: '',
+                    duration: 5000,
+                    removeDelay: 1000,
+                    style: {
+                        background: '#363636',
+                        color: '#fff',
+                    },
+                    success: {
+                        duration: 3000,
+                        iconTheme: {
+                            primary: 'green',
+                            secondary: 'black',
+                        },
+                    },
+                }}
+            />
             {showHeader && (
                 <div className="header-bar">
                     <h2>SSAS</h2>
@@ -215,7 +244,7 @@ export default function Dashboard() {
                                         onChange={(e) => handleChange(index, 'status', e.target.value)}
                                     >
                                         <option value="Absent">Absent</option>
-                                        <option value="Present">Absent with DL</option>
+                                        <option value="Absent with DL">Absent with DL</option>
                                     </select>
                                 </td>
                                 <td>
