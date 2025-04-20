@@ -31,7 +31,7 @@ export default function Dashboard() {
     };
 
     const handleLogout = async () => {
-        await fetch('http://localhost:8055/logout', {
+        await fetch('https://smart-school-backend-2.onrender.com/logout', {
             credentials: 'include'
         });
         navigate('/');
@@ -55,7 +55,7 @@ export default function Dashboard() {
 
     // Check authentication on mount
     useEffect(() => {
-        fetch('http://localhost:8055/check-auth', {
+        fetch('https://smart-school-backend-2.onrender.com/check-auth', {
             credentials: 'include'
         })
         .then(res => res.json())
