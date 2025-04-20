@@ -66,7 +66,7 @@ export default function Dashboard() {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/getStudent?roll=${rollNumber}&class=SY`); // Adjust class as needed
+            const response = await fetch(`smart-school-backend-2.onrender.com/getStudent?roll=${rollNumber}&class=SY`); // Adjust class as needed
             const data = await response.json();
             if (data.name) {
                 const updatedFields = [...fields];
@@ -94,7 +94,7 @@ export default function Dashboard() {
         for (const field of fields) {
             if (field.status === "Absent") {
                 const time = new Date().toLocaleString(); // Get the current time
-                await fetch('http://localhost:5000/sendSms', {
+                await fetch('smart-school-backend-2.onrender.com/sendSms', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
