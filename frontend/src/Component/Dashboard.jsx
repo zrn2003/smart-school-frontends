@@ -25,7 +25,7 @@ export default function Dashboard() {
 
     const handleLogout = async () => {
         try {
-            await fetch('https://smart-school-backend-2.onrender.com/logout', {
+            await fetch('http://localhost:8055/logout', {
                 credentials: 'include',
             });
         } catch (error) {
@@ -68,7 +68,7 @@ export default function Dashboard() {
         }
 
         try {
-            const response = await fetch(`https://smart-school-backend-2.onrender.com/getStudent?roll=${rollNumber}&class=${selectedClass}`); // Use selectedClass
+            const response = await fetch(`http://localhost:5000/getStudent?roll=${rollNumber}&class=${selectedClass}`); // Use selectedClass
             const data = await response.json();
             if (data.name) {
                 const updatedFields = [...fields];
@@ -96,7 +96,7 @@ export default function Dashboard() {
         for (const field of fields) {
             if (field.status === "Absent" || field.status === "Absent with DL") {
                 const time = new Date().toLocaleString(); // Get the current time
-                await fetch('https://smart-school-backend-2.onrender.com/sendSms', {
+                await fetch('http://localhost:5000/sendSms', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
